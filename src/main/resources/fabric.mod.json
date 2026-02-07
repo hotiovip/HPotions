@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "hpotions",
+	"version": "${version}",
+	"name": "HPotions",
+	"description": "Hotiovip's Potions! Adds potions that let you see specific ores, even through walls!",
+	"authors": [
+		"Hotiovip"
+	],
+	"contact": {
+		"homepage": "",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/hpotions/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"org.hotiovip.HPotions"
+		],
+		"client": [
+			"org.hotiovip.HPotionsClient"
+		],
+		"fabric-datagen": [
+          "org.hotiovip.HPotionsDataGenerator"
+		]
+	},
+	"mixins": [
+		"hpotions.mixins.json",
+		{
+			"config": "hpotions.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.18.4",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

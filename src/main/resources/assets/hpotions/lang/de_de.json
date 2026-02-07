@@ -1,0 +1,55 @@
+{
+  "effect.hpotions.ender_eye": "Gewöhnliches Auge",
+  "item.minecraft.potion.effect.ender_eye": "Trank des Gewöhnlichen Auges",
+  "item.minecraft.splash_potion.effect.ender_eye": "Wurftrank des Gewöhnlichen Auges",
+  "item.minecraft.lingering_potion.effect.ender_eye": "Verweiltrank des Gewöhnlichen Auges",
+  "item.minecraft.tipped_arrow.effect.ender_eye": "Pfeil des Gewöhnlichen Auges",
+
+  "effect.hpotions.copper_eye": "Kupferauge",
+  "item.minecraft.potion.effect.copper_eye": "Trank des Kupferauges",
+  "item.minecraft.splash_potion.effect.copper_eye": "Wurftrank des Kupferauges",
+  "item.minecraft.lingering_potion.effect.copper_eye": "Verweiltrank des Kupferauges",
+  "item.minecraft.tipped_arrow.effect.copper_eye": "Pfeil des Kupferauges",
+
+  "effect.hpotions.iron_eye": "Eisenauge",
+  "item.minecraft.potion.effect.iron_eye": "Trank des Eisenauges",
+  "item.minecraft.splash_potion.effect.iron_eye": "Wurftrank des Eisenauges",
+  "item.minecraft.lingering_potion.effect.iron_eye": "Verweiltrank des Eisenauges",
+  "item.minecraft.tipped_arrow.effect.iron_eye": "Pfeil des Eisenauges",
+
+  "effect.hpotions.gold_eye": "Goldauge",
+  "item.minecraft.potion.effect.gold_eye": "Trank des Goldauges",
+  "item.minecraft.splash_potion.effect.gold_eye": "Wurftrank des Goldauges",
+  "item.minecraft.lingering_potion.effect.gold_eye": "Verweiltrank des Goldauges",
+  "item.minecraft.tipped_arrow.effect.gold_eye": "Pfeil des Goldauges",
+
+  "effect.hpotions.lapis_eye": "Lapislazuliauge",
+  "item.minecraft.potion.effect.lapis_eye": "Trank des Lapislazuliauges",
+  "item.minecraft.splash_potion.effect.lapis_eye": "Wurftrank des Lapislazuliauges",
+  "item.minecraft.lingering_potion.effect.lapis_eye": "Verweiltrank des Lapislazuliauges",
+  "item.minecraft.tipped_arrow.effect.lapis_eye": "Pfeil des Lapislazuliauges",
+
+  "effect.hpotions.redstone_eye": "Redstoneauge",
+  "item.minecraft.potion.effect.redstone_eye": "Trank des Redstoneauges",
+  "item.minecraft.splash_potion.effect.redstone_eye": "Wurftrank des Redstoneauges",
+  "item.minecraft.lingering_potion.effect.redstone_eye": "Verweiltrank des Redstoneauges",
+  "item.minecraft.tipped_arrow.effect.redstone_eye": "Pfeil des Redstoneauges",
+
+  "effect.hpotions.diamond_eye": "Diamantauge",
+  "item.minecraft.potion.effect.diamond_eye": "Trank des Diamantauges",
+  "item.minecraft.splash_potion.effect.diamond_eye": "Wurftrank des Diamantauges",
+  "item.minecraft.lingering_potion.effect.diamond_eye": "Verweiltrank des Diamantauges",
+  "item.minecraft.tipped_arrow.effect.diamond_eye": "Pfeil des Diamantauges",
+
+  "effect.hpotions.emerald_eye": "Smaragdauge",
+  "item.minecraft.potion.effect.emerald_eye": "Trank des Smaragdauges",
+  "item.minecraft.splash_potion.effect.emerald_eye": "Wurftrank des Smaragdauges",
+  "item.minecraft.lingering_potion.effect.emerald_eye": "Verweiltrank des Smaragdauges",
+  "item.minecraft.tipped_arrow.effect.emerald_eye": "Pfeil des Smaragdauges",
+
+  "effect.hpotions.ancient_debris_eye": "Antikes Schrottauge",
+  "item.minecraft.potion.effect.ancient_debris_eye": "Trank des Antiken Schrottauges",
+  "item.minecraft.splash_potion.effect.ancient_debris_eye": "Wurftrank des Antiken Schrottauges",
+  "item.minecraft.lingering_potion.effect.ancient_debris_eye": "Verweiltrank des Antiken Schrottauges",
+  "item.minecraft.tipped_arrow.effect.ancient_debris_eye": "Pfeil des Antiken Schrottauges"
+}

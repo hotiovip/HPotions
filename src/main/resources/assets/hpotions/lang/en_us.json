@@ -1,0 +1,55 @@
+{
+  "effect.hpotions.ender_eye": "Mundane Eye",
+  "item.minecraft.potion.effect.ender_eye": "Potion of Mundane Eye",
+  "item.minecraft.splash_potion.effect.ender_eye": "Splash Potion of Mundane Eye",
+  "item.minecraft.lingering_potion.effect.ender_eye": "Lingering Potion of Mundane Eye",
+  "item.minecraft.tipped_arrow.effect.ender_eye": "Arrow of Mundane Eye",
+
+  "effect.hpotions.copper_eye": "Copper Eye",
+  "item.minecraft.potion.effect.copper_eye": "Potion of Copper Eye",
+  "item.minecraft.splash_potion.effect.copper_eye": "Splash Potion of Copper Eye",
+  "item.minecraft.lingering_potion.effect.copper_eye": "Lingering Potion of Copper Eye",
+  "item.minecraft.tipped_arrow.effect.copper_eye": "Arrow of Copper Eye",
+
+  "effect.hpotions.iron_eye": "Iron Eye",
+  "item.minecraft.potion.effect.iron_eye": "Potion of Iron Eye",
+  "item.minecraft.splash_potion.effect.iron_eye": "Splash Potion of Iron Eye",
+  "item.minecraft.lingering_potion.effect.iron_eye": "Lingering Potion of Iron Eye",
+  "item.minecraft.tipped_arrow.effect.iron_eye": "Arrow of Iron Eye",
+
+  "effect.hpotions.gold_eye": "Gold Eye",
+  "item.minecraft.potion.effect.gold_eye": "Potion of Gold Eye",
+  "item.minecraft.splash_potion.effect.gold_eye": "Splash Potion of Gold Eye",
+  "item.minecraft.lingering_potion.effect.gold_eye": "Lingering Potion of Gold Eye",
+  "item.minecraft.tipped_arrow.effect.gold_eye": "Arrow of Gold Eye",
+
+  "effect.hpotions.lapis_eye": "Lapis Eye",
+  "item.minecraft.potion.effect.lapis_eye": "Potion of Lapis Eye",
+  "item.minecraft.splash_potion.effect.lapis_eye": "Splash Potion of Lapis Eye",
+  "item.minecraft.lingering_potion.effect.lapis_eye": "Lingering Potion of Lapis Eye",
+  "item.minecraft.tipped_arrow.effect.lapis_eye": "Arrow of Lapis Eye",
+
+  "effect.hpotions.redstone_eye": "Redstone Eye",
+  "item.minecraft.potion.effect.redstone_eye": "Potion of Redstone Eye",
+  "item.minecraft.splash_potion.effect.redstone_eye": "Splash Potion of Redstone Eye",
+  "item.minecraft.lingering_potion.effect.redstone_eye": "Lingering Potion of Redstone Eye",
+  "item.minecraft.tipped_arrow.effect.redstone_eye": "Arrow of Redstone Eye",
+
+  "effect.hpotions.diamond_eye": "Diamond Eye",
+  "item.minecraft.potion.effect.diamond_eye": "Potion of Diamond Eye",
+  "item.minecraft.splash_potion.effect.diamond_eye": "Splash Potion of Diamond Eye",
+  "item.minecraft.lingering_potion.effect.diamond_eye": "Lingering Potion of Diamond Eye",
+  "item.minecraft.tipped_arrow.effect.diamond_eye": "Arrow of Diamond Eye",
+
+  "effect.hpotions.emerald_eye": "Emerald Eye",
+  "item.minecraft.potion.effect.emerald_eye": "Potion of Emerald Eye",
+  "item.minecraft.splash_potion.effect.emerald_eye": "Splash Potion of Emerald Eye",
+  "item.minecraft.lingering_potion.effect.emerald_eye": "Lingering Potion of Emerald Eye",
+  "item.minecraft.tipped_arrow.effect.emerald_eye": "Arrow of Emerald Eye",
+
+  "effect.hpotions.ancient_debris_eye": "Ancient Debris Eye",
+  "item.minecraft.potion.effect.ancient_debris_eye": "Potion of Ancient Debris Eye",
+  "item.minecraft.splash_potion.effect.ancient_debris_eye": "Splash Potion of Ancient Debris Eye",
+  "item.minecraft.lingering_potion.effect.ancient_debris_eye": "Lingering Potion of Ancient Debris Eye",
+  "item.minecraft.tipped_arrow.effect.ancient_debris_eye": "Arrow of Ancient Debris Eye"
+}

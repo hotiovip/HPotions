@@ -1,0 +1,55 @@
+{
+  "effect.hpotions.ender_eye": "Occhio Comune",
+  "item.minecraft.potion.effect.ender_eye": "Pozione dell'Occhio Comune",
+  "item.minecraft.splash_potion.effect.ender_eye": "Pozione Splash dell'Occhio Comune",
+  "item.minecraft.lingering_potion.effect.ender_eye": "Pozione Persistente dell'Occhio Comune",
+  "item.minecraft.tipped_arrow.effect.ender_eye": "Freccia dell'Occhio Comune",
+
+  "effect.hpotions.copper_eye": "Occhio di Rame",
+  "item.minecraft.potion.effect.copper_eye": "Pozione dell'Occhio di Rame",
+  "item.minecraft.splash_potion.effect.copper_eye": "Pozione Splash dell'Occhio di Rame",
+  "item.minecraft.lingering_potion.effect.copper_eye": "Pozione Persistente dell'Occhio di Rame",
+  "item.minecraft.tipped_arrow.effect.copper_eye": "Freccia dell'Occhio di Rame",
+
+  "effect.hpotions.iron_eye": "Occhio di Ferro",
+  "item.minecraft.potion.effect.iron_eye": "Pozione dell'Occhio di Ferro",
+  "item.minecraft.splash_potion.effect.iron_eye": "Pozione Splash dell'Occhio di Ferro",
+  "item.minecraft.lingering_potion.effect.iron_eye": "Pozione Persistente dell'Occhio di Ferro",
+  "item.minecraft.tipped_arrow.effect.iron_eye": "Freccia dell'Occhio di Ferro",
+
+  "effect.hpotions.gold_eye": "Occhio d'Oro",
+  "item.minecraft.potion.effect.gold_eye": "Pozione dell'Occhio d'Oro",
+  "item.minecraft.splash_potion.effect.gold_eye": "Pozione Splash dell'Occhio d'Oro",
+  "item.minecraft.lingering_potion.effect.gold_eye": "Pozione Persistente dell'Occhio d'Oro",
+  "item.minecraft.tipped_arrow.effect.gold_eye": "Freccia dell'Occhio d'Oro",
+
+  "effect.hpotions.lapis_eye": "Occhio di Lapislazzuli",
+  "item.minecraft.potion.effect.lapis_eye": "Pozione dell'Occhio di Lapislazzuli",
+  "item.minecraft.splash_potion.effect.lapis_eye": "Pozione Splash dell'Occhio di Lapislazzuli",
+  "item.minecraft.lingering_potion.effect.lapis_eye": "Pozione Persistente dell'Occhio di Lapislazzuli",
+  "item.minecraft.tipped_arrow.effect.lapis_eye": "Freccia dell'Occhio di Lapislazzuli",
+
+  "effect.hpotions.redstone_eye": "Occhio di Pietrarossa",
+  "item.minecraft.potion.effect.redstone_eye": "Pozione dell'Occhio di Pietrarossa",
+  "item.minecraft.splash_potion.effect.redstone_eye": "Pozione Splash dell'Occhio di Pietrarossa",
+  "item.minecraft.lingering_potion.effect.redstone_eye": "Pozione Persistente dell'Occhio di Pietrarossa",
+  "item.minecraft.tipped_arrow.effect.redstone_eye": "Freccia dell'Occhio di Pietrarossa",
+
+  "effect.hpotions.diamond_eye": "Occhio di Diamante",
+  "item.minecraft.potion.effect.diamond_eye": "Pozione dell'Occhio di Diamante",
+  "item.minecraft.splash_potion.effect.diamond_eye": "Pozione Splash dell'Occhio di Diamante",
+  "item.minecraft.lingering_potion.effect.diamond_eye": "Pozione Persistente dell'Occhio di Diamante",
+  "item.minecraft.tipped_arrow.effect.diamond_eye": "Freccia dell'Occhio di Diamante",
+
+  "effect.hpotions.emerald_eye": "Occhio di Smeraldo",
+  "item.minecraft.potion.effect.emerald_eye": "Pozione dell'Occhio di Smeraldo",
+  "item.minecraft.splash_potion.effect.emerald_eye": "Pozione Splash dell'Occhio di Smeraldo",
+  "item.minecraft.lingering_potion.effect.emerald_eye": "Pozione Persistente dell'Occhio di Smeraldo",
+  "item.minecraft.tipped_arrow.effect.emerald_eye": "Freccia dell'Occhio di Smeraldo",
+
+  "effect.hpotions.ancient_debris_eye": "Occhio di Detriti Antichi",
+  "item.minecraft.potion.effect.ancient_debris_eye": "Pozione dell'Occhio di Detriti Antichi",
+  "item.minecraft.splash_potion.effect.ancient_debris_eye": "Pozione Splash dell'Occhio di Detriti Antichi",
+  "item.minecraft.lingering_potion.effect.ancient_debris_eye": "Pozione Persistente dell'Occhio di Detriti Antichi",
+  "item.minecraft.tipped_arrow.effect.ancient_debris_eye": "Freccia dell'Occhio di Detriti Antichi"
+}
