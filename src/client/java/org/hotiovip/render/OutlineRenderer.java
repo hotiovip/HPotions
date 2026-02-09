@@ -8,6 +8,7 @@ import com.mojang.blaze3d.platform.DepthTestFunction;
 import com.mojang.blaze3d.systems.CommandEncoder;
 import com.mojang.blaze3d.systems.RenderPass;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.textures.GpuTextureView;
 import com.mojang.blaze3d.vertex.*;
 import net.fabricmc.fabric.api.client.rendering.v1.world.WorldRenderContext;
 import net.minecraft.client.Minecraft;
@@ -28,6 +29,7 @@ import org.joml.Vector3f;
 import org.joml.Vector4f;
 import org.lwjgl.system.MemoryUtil;
 
+import java.nio.ByteBuffer;
 import java.util.*;
 
 public class OutlineRenderer {
@@ -78,7 +80,7 @@ public class OutlineRenderer {
         // Draw the buffer if it contains data
         if (buffer != null && !cachedBlocks.isEmpty()) {
             try {
-                drawLinesThroughWalls(LINES_THROUGH_WALLS);
+                drawLinesThroughWalls();
             } catch (Exception e) {
                 HPotions.LOGGER.error("Error drawing ore outlines", e);
                 buffer = null; // Cleanup on error
@@ -151,7 +153,7 @@ public class OutlineRenderer {
 
             if (color != null) {
                 renderLineBoxWithCulling(blocksToCheckFor, matrices.last().pose(), buffer, pos, client.level,
-                        color[0], color[1], color[2], 0.5f); // Note: color[3] doesn't exist (only RGB)
+                        color[0], color[1], color[2], color[3]);
             }
         }
 
@@ -228,7 +230,7 @@ public class OutlineRenderer {
     /**
      * Builds and draws the buffer to GPU.
      */
-    private void drawLinesThroughWalls(RenderPipeline pipeline) {
+    private void drawLinesThroughWalls() {
         // Build the mesh data from buffer
         MeshData builtBuffer = buffer.buildOrThrow();
         MeshData.DrawState drawParameters = builtBuffer.drawState();
@@ -238,7 +240,7 @@ public class OutlineRenderer {
         GpuBuffer vertices = upload(drawParameters, format, builtBuffer);
 
         // Execute draw call
-        draw(pipeline, builtBuffer, drawParameters, vertices, format);
+        draw(builtBuffer, drawParameters, vertices);
 
         // Rotate vertex buffer to avoid GPU conflicts
         vertexBuffer.rotate();
@@ -276,20 +278,30 @@ public class OutlineRenderer {
     /**
      * Executes the actual GPU draw call.
      */
-    private static void draw(RenderPipeline pipeline, MeshData builtBuffer, MeshData.DrawState drawParameters, GpuBuffer vertices, VertexFormat format) {
+    private static void draw(MeshData builtBuffer, MeshData.DrawState drawParameters, GpuBuffer vertices) {
         GpuBuffer indices;
         VertexFormat.IndexType indexType;
 
         // Handle index buffer based on vertex format mode
-        if (pipeline.getVertexFormatMode() == VertexFormat.Mode.QUADS) {
+        if (OutlineRenderer.LINES_THROUGH_WALLS.getVertexFormatMode() == VertexFormat.Mode.QUADS) {
             // Sort quads for translucency
             builtBuffer.sortQuads(allocator, RenderSystem.getProjectionType().vertexSorting());
-            indices = pipeline.getVertexFormat().uploadImmediateIndexBuffer(builtBuffer.indexBuffer());
-            indexType = builtBuffer.drawState().indexType();
+
+            ByteBuffer indexBuffer = builtBuffer.indexBuffer();
+            if (indexBuffer != null) {
+                indices = OutlineRenderer.LINES_THROUGH_WALLS
+                        .getVertexFormat()
+                        .uploadImmediateIndexBuffer(indexBuffer);
+                indexType = builtBuffer.drawState().indexType();
+            } else {
+                HPotions.LOGGER.error("Index Buffer is null. Aborting outline rendering");
+                builtBuffer.close();
+                return;
+            }
         } else {
             // Use sequential index buffer for non-quad modes
             RenderSystem.AutoStorageIndexBuffer shapeIndexBuffer =
-                    RenderSystem.getSequentialBuffer(pipeline.getVertexFormatMode());
+                    RenderSystem.getSequentialBuffer(OutlineRenderer.LINES_THROUGH_WALLS.getVertexFormatMode());
             indices = shapeIndexBuffer.getBuffer(drawParameters.indexCount());
             indexType = shapeIndexBuffer.type();
         }
@@ -299,24 +311,32 @@ public class OutlineRenderer {
                 .writeTransform(RenderSystem.getModelViewMatrix(), COLOR_MODULATOR, MODEL_OFFSET, TEXTURE_MATRIX);
 
         // Execute render pass
-        try (RenderPass renderPass = RenderSystem.getDevice()
-                .createCommandEncoder()
-                .createRenderPass(
-                        () -> HPotions.MOD_ID + " render pass",
-                        Minecraft.getInstance().getMainRenderTarget().getColorTextureView(),
-                        OptionalInt.empty(),
-                        Minecraft.getInstance().getMainRenderTarget().getDepthTextureView(),
-                        OptionalDouble.empty()
-                )) {
+        GpuTextureView colorTextureView = Minecraft.getInstance().getMainRenderTarget().getColorTextureView();
+        if (colorTextureView != null) {
+            try (RenderPass renderPass = RenderSystem.getDevice()
+                    .createCommandEncoder()
+                    .createRenderPass(
+                            () -> HPotions.MOD_ID + " render pass",
+                            colorTextureView,
+                            OptionalInt.empty(),
+                            Minecraft.getInstance().getMainRenderTarget().getDepthTextureView(),
+                            OptionalDouble.empty()
+                    )) {
 
-            renderPass.setPipeline(pipeline);
-            RenderSystem.bindDefaultUniforms(renderPass);
-            renderPass.setUniform("DynamicTransforms", dynamicTransforms);
-            renderPass.setVertexBuffer(0, vertices);
-            renderPass.setIndexBuffer(indices, indexType);
-            renderPass.drawIndexed(0, 0, drawParameters.indexCount(), 1);
+                renderPass.setPipeline(OutlineRenderer.LINES_THROUGH_WALLS);
+                RenderSystem.bindDefaultUniforms(renderPass);
+                renderPass.setUniform("DynamicTransforms", dynamicTransforms);
+                renderPass.setVertexBuffer(0, vertices);
+                renderPass.setIndexBuffer(indices, indexType);
+                renderPass.drawIndexed(0, 0, drawParameters.indexCount(), 1);
+            }
+        }
+        else
+        {
+            HPotions.LOGGER.error("ColorTextureView is null, aborting rendering");
         }
 
+        // Close buffer to release resources
         builtBuffer.close();
     }
 
