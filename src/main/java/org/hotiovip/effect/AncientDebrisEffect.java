@@ -4,6 +4,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
+import org.jetbrains.annotations.NotNull;
 
 public class AncientDebrisEffect extends MobEffect {
     public AncientDebrisEffect() {
@@ -21,7 +22,7 @@ public class AncientDebrisEffect extends MobEffect {
 
     // Called when the effect is applied.
     @Override
-    public boolean applyEffectTick(ServerLevel level, LivingEntity entity, int amplifier) {
+    public boolean applyEffectTick(@NotNull ServerLevel level, @NotNull LivingEntity entity, int amplifier) {
         return super.applyEffectTick(level, entity, amplifier);
     }
 }

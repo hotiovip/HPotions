@@ -1,6 +1,5 @@
 package org.hotiovip.mixin.client;
 
-import org.hotiovip.HPotionsClient;
 import org.hotiovip.render.OutlineRenderer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

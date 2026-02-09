@@ -20,6 +20,7 @@ import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import org.hotiovip.render.OutlineRenderer;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
@@ -101,7 +102,7 @@ public class HPotionsClient implements ClientModInitializer {
 
         return blocksToCheckFor;
     }
-    
+
     private void changeTooltip(ItemStack itemStack, Item.TooltipContext tooltipContext, TooltipFlag tooltipFlag, List<Component> components) {
         if (itemStack.is(Items.SPLASH_POTION)) {
             PotionContents potions = itemStack.get(DataComponents.POTION_CONTENTS);
@@ -114,23 +115,7 @@ public class HPotionsClient implements ClientModInitializer {
 
                     if (components.size() > 1) {
                         // Get effect line (Copper Eye (3:00))
-                        Component oldLine = components.get(1);
-                        String oldText = oldLine.getString();
-
-                        // Extract effect name (Copper Eye)
-                        String name = oldText.substring(0, oldText.indexOf(" ("));
-
-                        // Halve duration - parse "03:00" -> 180s -> 90s -> "01:30"
-                        String durationPart = oldText.substring(oldText.indexOf("(") + 1, oldText.indexOf(")"));
-                        String[] timeParts = durationPart.split(":");
-                        int minutes = Integer.parseInt(timeParts[0]);
-                        int seconds = Integer.parseInt(timeParts[1]);
-                        int totalSeconds = minutes * 60 + seconds;
-                        int halvedSeconds = totalSeconds / 2;
-                        String newDuration = String.format("%02d:%02d", halvedSeconds / 60, halvedSeconds % 60);
-
-                        MutableComponent newLine = Component.literal(name + " (" + newDuration + ")");
-                        newLine.setStyle(oldLine.getStyle());  // Copies color, formatting (BLUE)
+                        MutableComponent newLine = getHalvedDurationTooltip(components);
 
                         // Replace
                         components.set(1, newLine);
@@ -138,5 +123,26 @@ public class HPotionsClient implements ClientModInitializer {
                 }
             }
         }
+    }
+    private @NotNull MutableComponent getHalvedDurationTooltip(List<Component> components) {
+        Component oldLine = components.get(1);
+        String oldText = oldLine.getString();
+
+        // Extract effect name (Copper Eye)
+        String name = oldText.substring(0, oldText.indexOf(" ("));
+
+        // Halve duration - parse "03:00" -> 180s -> 90s -> "01:30"
+        String durationPart = oldText.substring(oldText.indexOf("(") + 1, oldText.indexOf(")"));
+        String[] timeParts = durationPart.split(":");
+        int minutes = Integer.parseInt(timeParts[0]);
+        int seconds = Integer.parseInt(timeParts[1]);
+        int totalSeconds = minutes * 60 + seconds;
+        int halvedSeconds = totalSeconds / 2;
+        String newDuration = String.format("%02d:%02d", halvedSeconds / 60, halvedSeconds % 60);
+
+        // Build line with old style
+        MutableComponent newLine = Component.literal(name + " (" + newDuration + ")");
+        newLine.setStyle(oldLine.getStyle());  // Copies color, formatting (BLUE)
+        return newLine;
     }
 }

@@ -64,14 +64,6 @@ public class ColorProvider {
     }
 
     /**
-     * Get the RGB color array for a specific block.
-     * @param block The block to get color for
-     * @return int array {R, G, B} with values 0-255, or null if not found
-     */
-    public int[] getColorForBlock(Block block) {
-        return colors.get(block);
-    }
-    /**
      * Get normalized color values (0.0-1.0) for rendering.
      * @param block The block to get color for
      * @return float array {R, G, B} with values 0.0-1.0, or null if not found
@@ -82,14 +74,5 @@ public class ColorProvider {
             return null;
         }
         return new float[]{color[0] / 255f, color[1] / 255f, color[2] / 255f, color[3] / 255f};
-    }
-
-    /**
-     * Check if a block has a registered color.
-     * @param block The block to check
-     * @return true if color is registered
-     */
-    public boolean hasColor(Block block) {
-        return colors.containsKey(block);
     }
 }
