@@ -2,6 +2,7 @@ package org.hotiovip;
 
 import com.mojang.blaze3d.buffers.GpuBuffer;
 import com.mojang.blaze3d.buffers.GpuBufferSlice;
+import com.mojang.blaze3d.pipeline.BlendFunction;
 import com.mojang.blaze3d.pipeline.RenderPipeline;
 import com.mojang.blaze3d.platform.DepthTestFunction;
 import com.mojang.blaze3d.systems.CommandEncoder;
@@ -12,6 +13,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.world.WorldRenderContext;
 import net.fabricmc.fabric.api.client.rendering.v1.world.WorldRenderEvents;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.MappableRingBuffer;
@@ -49,10 +51,14 @@ public class HPotionsClient implements ClientModInitializer {
     private static HPotionsClient instance;
 
     // Render pipeline
-    private static final RenderPipeline LINES_THROUGH_WALLS = RenderPipelines.register(
+    public static final RenderPipeline LINES_THROUGH_WALLS = RenderPipelines.register(
             RenderPipeline.builder(RenderPipelines.LINES_SNIPPET)
                     .withLocation(Identifier.fromNamespaceAndPath(HPotions.MOD_ID, "pipeline/lines_through_walls"))
                     .withDepthTestFunction(DepthTestFunction.NO_DEPTH_TEST)
+                    .withCull(false)
+                    .withBlend(BlendFunction.TRANSLUCENT)
+                    .withColorWrite(true, true)
+                    .withDepthWrite(false)
                     .build()
     );
 
@@ -83,9 +89,12 @@ public class HPotionsClient implements ClientModInitializer {
     public void onInitializeClient() {
         instance = this;
 
-        // Register world render event before translucent rendering
-        WorldRenderEvents.BEFORE_TRANSLUCENT.register(this::extractAndDrawBlocks);
+        // Register pipeline on Iris
+        if (FabricLoader.getInstance().isModLoaded("iris")) SupportIris.assignPipelines();
 
+        // Register world render event before translucent rendering
+        WorldRenderEvents.END_MAIN.register(this::extractAndDrawBlocks);
+        // Register item tooltip callback event
         ItemTooltipCallback.EVENT.register(this::changeTooltip);
     }
 
@@ -167,6 +176,7 @@ public class HPotionsClient implements ClientModInitializer {
                 buffer = null; // Cleanup on error
             }
         }
+
     }
     /**
      * Scans for target blocks and renders wireframe outlines.
