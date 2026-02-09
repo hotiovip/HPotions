@@ -28,15 +28,8 @@ import java.util.*;
  * Handles rendering of ore outlines when effects are active.
  */
 public class HPotionsClient implements ClientModInitializer {
-    private static HPotionsClient instance;
-    public static HPotionsClient getInstance() {
-        return instance;
-    }
-
     @Override
     public void onInitializeClient() {
-        instance = this;
-
         // Register pipeline on Iris
         if (FabricLoader.getInstance().isModLoaded("iris")) SupportIris.assignPipelines();
 
