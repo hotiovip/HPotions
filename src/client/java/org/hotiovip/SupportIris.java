@@ -1,6 +1,7 @@
 package org.hotiovip;
 
 import com.mojang.blaze3d.pipeline.RenderPipeline;
+import org.hotiovip.render.OutlineRenderer;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
@@ -15,7 +16,7 @@ public class SupportIris {
     private static final MethodHandle GET_IRIS_PROGRAM = getIrisProgramHandle();
 
     public static void assignPipelines() {
-        assignPipeline(HPotionsClient.LINES_THROUGH_WALLS, "LINES");
+        assignPipeline(OutlineRenderer.LINES_THROUGH_WALLS, "LINES");
     }
 
     private static void assignPipeline(RenderPipeline pipeline, String irisProgramName) {
