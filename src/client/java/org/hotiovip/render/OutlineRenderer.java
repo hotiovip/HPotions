@@ -33,6 +33,7 @@ import java.util.*;
 public class OutlineRenderer {
     private static OutlineRenderer instance;
     public static OutlineRenderer getInstance() {
+        if (instance == null) instance = new OutlineRenderer();
         return instance;
     }
 
