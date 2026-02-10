@@ -2,15 +2,15 @@ package org.hotiovip;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
-import net.fabricmc.fabric.api.client.rendering.v1.world.WorldRenderContext;
-import net.fabricmc.fabric.api.client.rendering.v1.world.WorldRenderEvents;
+import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext;
+import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -35,7 +35,7 @@ public class HPotionsClient implements ClientModInitializer {
         if (FabricLoader.getInstance().isModLoaded("iris")) SupportIris.assignPipelines();
 
         // Register world render event before translucent rendering
-        WorldRenderEvents.END_MAIN.register(this::onWorldEndMainEvent);
+        WorldRenderEvents.END.register(this::onWorldEndMainEvent);
         // Register item tooltip callback event
         ItemTooltipCallback.EVENT.register(this::changeTooltip);
     }
@@ -108,7 +108,7 @@ public class HPotionsClient implements ClientModInitializer {
             PotionContents potions = itemStack.get(DataComponents.POTION_CONTENTS);
             // Check if there is a potion
             if (potions != null && potions.potion().isPresent()) {
-                Identifier id = BuiltInRegistries.POTION.getKey(potions.potion().get().value());
+                ResourceLocation id = BuiltInRegistries.POTION.getKey(potions.potion().get().value());
 
                 // Check if it is one of my potions
                 if (id != null && id.getNamespace().equals("hpotions")) {

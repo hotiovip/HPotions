@@ -1,23 +1,23 @@
 package org.hotiovip.mixin;
 
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrownSplashPotion;
+import net.minecraft.world.entity.projectile.ThrownPotion;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
-@Mixin(ThrownSplashPotion.class)
+@Mixin(ThrownPotion.class)
 public class ThrownSplashPotionMixin {
 
     @ModifyVariable(
-            method = "onHitAsPotion",
+            method = "applySplash",
             at = @At(value = "STORE", ordinal = 0)
     )
     private MobEffectInstance hpotions$halfDuration(MobEffectInstance effect) {
         // Fix: Handle Holder<MobEffect> correctly
-        Identifier id = BuiltInRegistries.MOB_EFFECT.getKey(effect.getEffect().value());
+        ResourceLocation id = BuiltInRegistries.MOB_EFFECT.getKey(effect.getEffect().value());
 
         if (id != null && id.getNamespace().equals("hpotions")) {
             return new MobEffectInstance(
