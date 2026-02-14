@@ -8,10 +8,10 @@
 		"Hotiovip"
 	],
 	"contact": {
-		"homepage": "",
+		"homepage": "https://modrinth.com/mod/hpotions",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
-	"license": "CC0-1.0",
+	"license": "All Rights Reserved",
 	"icon": "assets/hpotions/icon.png",
 	"environment": "*",
 	"entrypoints": {
